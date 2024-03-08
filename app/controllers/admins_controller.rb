@@ -13,6 +13,20 @@ class AdminsController < ApplicationController
     render json: @admin
   end
 
+  def sign_in_admin
+    email = params['email']
+    pass = params['password']
+
+    @admin = Admin.find_by(email: email)
+
+    if @admin.password == pass
+      render json: @admin, status: :ok
+    else
+      render json: {"error" => "password doesnt match"}, status: :error
+    end
+
+  end
+
   # POST /admins
   def create
     @admin = Admin.new(admin_params)
