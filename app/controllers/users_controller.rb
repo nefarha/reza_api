@@ -17,14 +17,36 @@ class UsersController < ApplicationController
     render json: data
   end
 
+  def sign_in_user
+    email = params['email']
+    pass = params['password']
+
+    @user = User.find_by(email: email)
+
+    if @user == nil
+      data = {"data" => "user not found","status" => 404}
+      render json: data, status: :ok
+    else
+       if @user.password == pass
+        data = {"data" => @user,"status" => 200}
+        render json: data, status: :ok
+      else
+        data = {"data" => "password doesn't match", "status" => 404}
+        render json: data, status: :ok
+      end
+    end
+  end
+
   # POST /users
   def create
     @user = User.new(user_params)
 
     if @user.save
-      render json: @user, status: :created, location: @user
+      data = {"data" => @user,"status" => 201}
+      render json: data, location: @user
     else
-      render json: @user.errors, status: :unprocessable_entity
+      data = {"data" => "email has been already taken","status" => 401}
+      render json: data
     end
   end
 

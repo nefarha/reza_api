@@ -19,12 +19,18 @@ class AdminsController < ApplicationController
 
     @admin = Admin.find_by(email: email)
 
-    if @admin.password == pass
-      render json: @admin, status: :ok
+    if @admin == nil
+      data = {"data" => "admin not found","status" => 404}
+      render json: data, status: :ok
     else
-      render json: {"error" => "password doesnt match"}, status: :error
+       if @admin.password == pass
+        data = {"data" => @admin,"status" => 200}
+        render json: data, status: :ok
+      else
+        data = {"data" => "password doesn't match", "status" => 404}
+        render json: data, status: :ok
+      end
     end
-
   end
 
   # POST /admins
@@ -32,9 +38,11 @@ class AdminsController < ApplicationController
     @admin = Admin.new(admin_params)
 
     if @admin.save
-      render json: @admin, status: :created, location: @admin
+      data = {"data" => @admin,"status" => 200}
+      render json: data, location: @admin
     else
-      render json: @admin.errors, status: :unprocessable_entity
+      data = {"data" => "email has been already taken","status" => 401}
+      render json: data
     end
   end
 

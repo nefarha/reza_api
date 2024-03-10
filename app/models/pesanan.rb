@@ -1,0 +1,2 @@
+class Pesanan < ApplicationRecord
+end

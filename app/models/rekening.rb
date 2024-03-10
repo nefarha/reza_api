@@ -1,0 +1,2 @@
+class Rekening < ApplicationRecord
+end

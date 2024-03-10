@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nama_pemesan: MyString
+  nomor_pemesan: 1
+  nama_rekening_pemesan: MyString
+  nomor_rekening_pemesan: 1
+  wisata: 1
+  rekening_penerima: 1
+  jumlah_ticket: 1
+  total_harga: MyString
+  image: MyString
+  owner_id: 1
+  status: MyString
+
+two:
+  nama_pemesan: MyString
+  nomor_pemesan: 1
+  nama_rekening_pemesan: MyString
+  nomor_rekening_pemesan: 1
+  wisata: 1
+  rekening_penerima: 1
+  jumlah_ticket: 1
+  total_harga: MyString
+  image: MyString
+  owner_id: 1
+  status: MyString

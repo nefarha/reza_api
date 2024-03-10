@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :pesanans
+  resources :wisata
+  resources :rekenings
   resources :admins
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -9,6 +12,7 @@ Rails.application.routes.draw do
 
 
   get "sign_in_admin", to: "admins#sign_in_admin"
+  get "sign_in_user", to: "users#sign_in_user"
 
   # Defines the root path route ("/")
   # root "posts#index"

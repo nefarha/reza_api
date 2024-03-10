@@ -1,0 +1,2 @@
+class Wisatum < ApplicationRecord
+end
